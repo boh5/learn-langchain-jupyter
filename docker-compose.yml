@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  redis-stack:
+    image: redis/redis-stack:latest # 官方镜像，包含所有模块[1](@ref)
+    container_name: redis-stack
+    ports:
+      - "6379:6379" # Redis 服务端口
+      - "8001:8001" # RedisInsight 控制台端口[1](@ref)
+    volumes:
+      - ./redis_stack_data/data:/data # 数据持久化目录[1](@ref)
+    healthcheck: # 健康检查
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    networks:
+      - learn-langchain-jupyter-redis-net
+
+networks:
+  learn-langchain-jupyter-redis-net:
+    driver: bridge

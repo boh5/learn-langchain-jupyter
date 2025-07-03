@@ -1,0 +1,20 @@
+[project]
+name = "learn-langchain-jupyter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dotenv>=0.9.9",
+    "jupyter>=1.1.1",
+    "langchain-openai>=0.3.25",
+    "langchain-redis>=0.2.3",
+    "langchain>=0.3.26",
+    "redis>=6.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "grandalf>=0.8",
+    "langgraph>=0.5.1",
+]
